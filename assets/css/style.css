@@ -492,17 +492,28 @@ p { margin: 0 0 1.1em; }
 .contact-list a:hover { color: var(--cyan); }
 .contact-list svg { width: 20px; height: 20px; flex-shrink: 0; }
 
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
 .accreditation {
-  display: inline-block;
-  margin-top: 32px;
-  padding: 16px 20px;
-  background: #fff;
-  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 14px;
 }
 .accreditation img {
   display: block;
-  width: 112px;
+  width: 64px;
   height: auto;
+  flex-shrink: 0;
+}
+.accreditation p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text-muted);
 }
 
 .contact-form {
