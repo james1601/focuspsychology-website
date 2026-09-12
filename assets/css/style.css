@@ -495,7 +495,7 @@ p { margin: 0 0 1.1em; }
 .contact-info-col {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  gap: 38px;
 }
 
 .accreditation {
@@ -505,7 +505,7 @@ p { margin: 0 0 1.1em; }
 }
 .accreditation img {
   display: block;
-  width: 64px;
+  width: 128px;
   height: auto;
   flex-shrink: 0;
 }
