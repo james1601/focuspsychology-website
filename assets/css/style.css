@@ -492,6 +492,19 @@ p { margin: 0 0 1.1em; }
 .contact-list a:hover { color: var(--cyan); }
 .contact-list svg { width: 20px; height: 20px; flex-shrink: 0; }
 
+.accreditation {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 16px 20px;
+  background: #fff;
+  border-radius: var(--radius-sm);
+}
+.accreditation img {
+  display: block;
+  width: 112px;
+  height: auto;
+}
+
 .contact-form {
   background: var(--bg-white);
   border: 1px solid rgba(6,37,75,0.08);
