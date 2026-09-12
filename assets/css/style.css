@@ -78,19 +78,16 @@ p { margin: 0 0 1.1em; }
   background: linear-gradient(180deg, var(--bg-tint) 0%, var(--bg-tint-2) 100%);
 }
 
-.eyebrow {
-  display: inline-block;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 14px;
-}
-
 .section-head {
   max-width: 720px;
   margin-bottom: 44px;
+}
+
+/* .about .container is a grid that already applies its own gap between
+   children, so the section-head's own bottom margin would double up the
+   space before the first paragraph — drop it here only. */
+.about .section-head {
+  margin-bottom: 0;
 }
 
 .section-head.center {
@@ -400,7 +397,7 @@ p { margin: 0 0 1.1em; }
   background: var(--bg-white);
   border: 1px solid rgba(6,37,75,0.08);
   border-radius: var(--radius);
-  padding: 40px 34px;
+  overflow: hidden;
   box-shadow: var(--shadow-sm);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -409,47 +406,47 @@ p { margin: 0 0 1.1em; }
   box-shadow: var(--shadow);
 }
 
-.service-icon {
-  width: 68px;
-  height: 68px;
-  margin-bottom: 22px;
+.service-banner {
+  display: block;
+  width: 100%;
+  height: 110px;
+}
+
+.service-card__body {
+  padding: 30px 34px 34px;
 }
 
 .service-card p:last-of-type { margin-bottom: 0; }
 
 /* ---------- Referral notice ---------- */
+/* Sits under the "Get in touch" heading, above the contact grid. */
 .referral-notice {
-  background: linear-gradient(120deg, var(--navy) 0%, var(--royal-dark) 100%);
-  color: #fff;
-  padding: 28px 0;
-}
-
-.referral-notice__inner {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 14px;
-  text-align: center;
-  flex-wrap: wrap;
+  background: linear-gradient(120deg, var(--navy) 0%, var(--royal-dark) 100%);
+  color: #fff;
+  border-radius: var(--radius-sm);
+  padding: 18px 24px;
+  margin-bottom: 36px;
 }
 
 .referral-notice svg {
-  width: 26px;
-  height: 26px;
+  width: 24px;
+  height: 24px;
   flex-shrink: 0;
   color: var(--cyan);
 }
 
 .referral-notice p {
   margin: 0;
-  font-size: 1.02rem;
-  max-width: 60ch;
+  font-size: 0.98rem;
 }
 
 .referral-notice strong { color: var(--cyan); }
 
 /* ---------- Contact ---------- */
-.contact .container {
+.contact {
   display: grid;
   grid-template-columns: 0.85fr 1.15fr;
   gap: 50px;
@@ -674,7 +671,7 @@ p { margin: 0 0 1.1em; }
   .about-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .why-grid { grid-template-columns: 1fr; gap: 36px; }
   .services-grid { grid-template-columns: 1fr; }
-  .contact .container { grid-template-columns: 1fr; }
+  .contact { grid-template-columns: 1fr; }
 }
 
 /* Nav switches to the hamburger menu earlier than the content breakpoints
@@ -696,4 +693,5 @@ p { margin: 0 0 1.1em; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { flex-direction: column; }
   .footer-links { gap: 36px; }
+  .referral-notice { flex-direction: column; text-align: center; }
 }
