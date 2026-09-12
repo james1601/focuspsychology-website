@@ -262,16 +262,6 @@ p { margin: 0 0 1.1em; }
   z-index: 2;
 }
 
-.hero__eyebrow {
-  color: var(--teal);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  margin-bottom: 18px;
-  display: inline-block;
-}
-
 .hero h1 { margin-bottom: 0.3em; }
 
 .hero__subtitle {
@@ -297,12 +287,26 @@ p { margin: 0 0 1.1em; }
 .hero__art {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1;
-  max-width: 460px;
+  max-width: 380px;
   margin-inline: auto;
 }
 
-.hero__art svg { width: 100%; height: 100%; }
+.hero__art::before {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background: radial-gradient(circle, var(--bg-tint-2) 0%, transparent 70%);
+  z-index: -1;
+}
+
+.hero__art img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  transform: rotate(-2deg);
+}
 
 /* ---------- About ---------- */
 .about .container {
@@ -413,14 +417,36 @@ p { margin: 0 0 1.1em; }
 
 .service-card p:last-of-type { margin-bottom: 0; }
 
-.service-note {
-  margin-top: 18px;
-  padding-top: 16px;
-  border-top: 1px dashed rgba(6,37,75,0.18);
-  font-size: 0.88rem;
-  color: var(--text-muted);
-  font-style: italic;
+/* ---------- Referral notice ---------- */
+.referral-notice {
+  background: linear-gradient(120deg, var(--navy) 0%, var(--royal-dark) 100%);
+  color: #fff;
+  padding: 28px 0;
 }
+
+.referral-notice__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.referral-notice svg {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  color: var(--cyan);
+}
+
+.referral-notice p {
+  margin: 0;
+  font-size: 1.02rem;
+  max-width: 60ch;
+}
+
+.referral-notice strong { color: var(--cyan); }
 
 /* ---------- Contact ---------- */
 .contact .container {
@@ -567,10 +593,19 @@ p { margin: 0 0 1.1em; }
   border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
-.footer-brand img {
-  height: 34px;
-  margin-bottom: 14px;
-  filter: brightness(0) invert(1);
+.footer-brand__logo {
+  display: inline-block;
+  background: #fff;
+  padding: 10px 18px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  line-height: 0;
+}
+
+.footer-brand__logo img {
+  height: 30px;
+  width: auto;
+  display: block;
 }
 
 .footer-brand p {
@@ -642,14 +677,21 @@ p { margin: 0 0 1.1em; }
   .contact .container { grid-template-columns: 1fr; }
 }
 
+/* Nav switches to the hamburger menu earlier than the content breakpoints
+   below — the horizontal links + button need ~880px to avoid wrapping
+   messily, well before the layout itself needs to stack. */
+@media (max-width: 900px) {
+  .nav { position: fixed; inset: 70px 0 auto 0; background: #fff; flex-direction: column; align-items: center; padding: 8px 24px 28px; box-shadow: 0 20px 30px -20px rgba(6,37,75,0.35); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .nav.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  .nav__links { flex-direction: column; align-items: center; gap: 2px; width: 100%; }
+  .nav__links li { width: 100%; text-align: center; }
+  .nav__links a { display: block; padding: 14px 4px; border-bottom: 1px solid rgba(6,37,75,0.08); }
+  .nav .btn { margin-top: 16px; width: 100%; justify-content: center; }
+  .nav-toggle { display: inline-flex; }
+}
+
 @media (max-width: 720px) {
   .section { padding: 64px 0; }
-  .nav { position: fixed; inset: 70px 0 auto 0; background: #fff; flex-direction: column; align-items: stretch; padding: 20px 24px 28px; box-shadow: 0 20px 30px -20px rgba(6,37,75,0.35); transform: translateY(-12px); opacity: 0; pointer-events: none; transition: transform 0.2s ease, opacity 0.2s ease; }
-  .nav.is-open { transform: translateY(0); opacity: 1; pointer-events: auto; }
-  .nav__links { flex-direction: column; gap: 4px; }
-  .nav__links a { display: block; padding: 12px 4px; border-bottom: 1px solid rgba(6,37,75,0.08); }
-  .nav .btn { margin-top: 14px; width: 100%; justify-content: center; }
-  .nav-toggle { display: inline-flex; }
   .about-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .footer-top { flex-direction: column; }
